@@ -1,5 +1,5 @@
 import random
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta
 from config.database import db
 from errors import AuthError
 
@@ -25,7 +25,7 @@ def generate_otp(user_id):
     db.session.commit()
 
     code = str(random.randint(100000, 999999))
-    expires_at = datetime.now(timezone.utc) + timedelta(minutes=15)
+    expires_at = datetime.now() + timedelta(minutes=15)
 
     new_otp = OTP(user_id=user_id, code=code, expires_at=expires_at)
     db.session.add(new_otp)
@@ -54,7 +54,7 @@ def verify_otp(data):
     if otp.code != data['code']:
         raise AuthError('Código incorreto.')
 
-    if datetime.now(timezone.utc) > otp.expires_at.replace(tzinfo=timezone.utc):
+    if datetime.now() > otp.expires_at:
         raise AuthError('Código expirado. Faça o login novamente.')
 
     otp.used = True
