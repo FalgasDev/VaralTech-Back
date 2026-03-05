@@ -1,4 +1,4 @@
-# Ecommerce Backend
+# VaralTech Backend
 
 ## Como rodar
 
