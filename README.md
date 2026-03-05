@@ -12,13 +12,13 @@ pip install -r requirements.txt
 ### 2. Configure o .env
 Renomeie `.env.example` para `.env` e preencha:
 ```
-DATABASE_URL=postgresql://postgres:sua_senha@localhost:5432/ecommerce_db
+DATABASE_URL=postgresql://postgres:sua_senha@localhost:5432/VaralTech
 JWT_SECRET_KEY=qualquer-string-aqui
 ```
 
 ### 3. Crie o banco no PostgreSQL (pgAdmin ou psql)
 ```sql
-CREATE DATABASE ecommerce_db;
+CREATE DATABASE VaralTech;
 ```
 
 ### 4. Rode
